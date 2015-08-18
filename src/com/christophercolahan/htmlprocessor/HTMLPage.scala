@@ -1,5 +1,5 @@
 
-package test
+package com.christophercolahan.htmlprocessor
 
 import java.net._
 import java.io._
@@ -10,15 +10,15 @@ object XMLPage {
 
 	def getPage(fileName: String, vars: Map[String, Any]) : String = {
     
-    val lines = scala.io.Source.fromFile("pages/" + fileName).mkString
+		val lines = scala.io.Source.fromFile("pages/" + fileName).mkString
     
-    vars.foreach { case(k,v) => lines.replace("{" + k + "}", v.toString()) }
+		vars.foreach { case(k,v) => lines.replace("{" + k + "}", v.toString()) }
     
-    val changed = vars.foldLeft(lines){ case(text, (key, replacement)) => text.replace("{" + key + "}", replacement.toString()) }
+		val changed = vars.foldLeft(lines){ case(text, (key, replacement)) => text.replace("{" + key + "}", replacement.toString()) }
     
-    val xml = XML.loadString(changed)
+		val xml = XML.loadString(changed)
     
-    return xml.toString()
+		return xml.toString()
 	}
 
 	def main(args: Array[String]) {
