@@ -35,7 +35,8 @@ object HTTPServer {
 			tmp = in.readLine()
 		}
 		
-		out.println("<!doctype html>" + HTMLPage.getPageWithLocalRefs(pagesRootDir + "index.html", Map[String, Any]()))
+		out.println("<!doctype html>" + 
+			HTMLPage.minimize(HTMLPage.getPageWithLocalRefs(pagesRootDir + "index.html", Map[String, Any]())))
 		
 		connection.close()
 	}

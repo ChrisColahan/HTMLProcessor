@@ -68,4 +68,9 @@ object HTMLPage {
 		return newPage + page
 	}
 	
+	def minimize(htmlSource : String) : String = {
+		//removes all whitespace between tags and removes all comments
+		htmlSource.split(">").map { x => x.trim + ">" }.mkString.trim
+	}
+	
 }
